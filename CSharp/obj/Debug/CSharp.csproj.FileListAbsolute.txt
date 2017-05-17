@@ -1,0 +1,6 @@
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\bin\Debug\CSharp.exe.config
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\bin\Debug\CSharp.exe
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\bin\Debug\CSharp.pdb
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\obj\Debug\CSharp.exe
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\obj\Debug\CSharp.pdb
+c:\users\installvisual\documents\visual studio 2012\Projects\CSharp\CSharp\obj\Debug\CSharp.csprojResolveAssemblyReference.cache
