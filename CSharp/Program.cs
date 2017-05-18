@@ -19,21 +19,21 @@ namespace CSharp
 
             NhanVien v7 = new NhanVien("Hac dieu", "ky thuat", new Date(15, 02, 1987), 4.0);
 
-            QuanLy ql = new QuanLy();
+           // QuanLy ql = new QuanLy();
             /*Console.WriteLine("Nhap n: ");
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {  
                 ql.themNV(ql.nhapNV());
             }*/
-            ql.themNV(v1);
+            /*ql.themNV(v1);
             ql.themNV(v2);
             ql.themNV(v3);
             ql.themNV(v4);
             ql.themNV(v5);
             ql.themNV(v6);
             ql.hienThi();
-            ql.ghiFile();
+            ql.ghiFile();*/
 
             /*
             Console.WriteLine("---- Tim kiem ---");
@@ -54,11 +54,60 @@ namespace CSharp
             Console.WriteLine("\nDanh sach sau khi chen: ");
             ql.hienThi();*/
             
-            Console.WriteLine("\nDanh sach sau sap xep he so luon: ");
-            ql.sapXepHSL();
+            /*Console.WriteLine("\nDanh sach sau sap xep he so luon: ");
+            ql.sapXepHSL();*/
 
             //ql.docFile();
             //ql.hienThi();
+
+            Element e1 = new Element(v1);
+            Element e2 = new Element(v2);
+            Element e3 = new Element(v3);
+            Element e4 = new Element(v4);
+            Element e5 = new Element(v5);
+            Element e6 = new Element(v6);
+
+            Element e7 = new Element(v7);
+            LinkedList ll = new LinkedList();
+
+            ll.insertTail(e1);
+            ll.insertTail(e2);
+            ll.insertTail(e3);
+            ll.insertTail(e4);
+            ll.insertTail(e5);
+            ll.insertTail(e6);
+            ll.printList();
+
+            //Console.WriteLine("Nhap vao vi tri can chen: ");
+            //int index = int.Parse(Console.ReadLine());
+     
+            //Console.WriteLine("Nhan ky tu: ");
+            //string strName = Console.ReadLine();
+            //ll.timKiem(strName);
+            //Console.WriteLine("-----------------");
+
+            /*Console.WriteLine("Nhap vao vi tri can chen: ");
+            int index = int.Parse(Console.ReadLine());
+            Console.WriteLine("-----------------");
+            ll.chenNV(index, e7);
+            ll.printList();*/
+
+            //ll.xoaNV(strName);
+            
+            //ll.deleteAfter(e2, e3); //insertTail - remove e3
+            //ll.deleteAfter(e3, e2); //insertFirst - remove e2
+            
+            /*Console.WriteLine("Nhan ky tu: ");
+            string strName = Console.ReadLine();
+            Console.WriteLine("-----------------");
+            ll.xoaNV(strName);
+            ll.printList();*/
+
+            Console.WriteLine("-----------------");
+            Console.WriteLine("Danh sach da sap xep");
+            Console.WriteLine("-----------------");
+            ll.sapXep();
+            ll.printList();
 
             Console.ReadKey();
         }

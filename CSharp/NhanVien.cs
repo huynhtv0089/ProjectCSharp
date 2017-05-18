@@ -14,10 +14,7 @@ namespace CSharp
         private double heSoLuong;
         private int viTri;
 
-        public NhanVien()
-        {
-
-        }
+        public NhanVien() {}
 
         public NhanVien(string hoten, string chucvu, Date date, double hesoluong)
         {
