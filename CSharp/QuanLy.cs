@@ -124,17 +124,17 @@ namespace CSharp
                     vitri[i] = n.getViTri();
                     i++;
                 }
-                else if (Convert.ToString(n.getNgayThangNamSinh().Ngay).IndexOf(str) != -1)
+                else if (Convert.ToString(n.getNgayThangNamSinh().getNgay()).IndexOf(str) != -1)
                 {
                     vitri[i] = n.getViTri();
                     i++;
                 }
-                else if (Convert.ToString(n.getNgayThangNamSinh().Thang).IndexOf(str) != -1)
+                else if (Convert.ToString(n.getNgayThangNamSinh().getThang()).IndexOf(str) != -1)
                 {
                     vitri[i] = n.getViTri();
                     i++;
                 }
-                else if (Convert.ToString(n.getNgayThangNamSinh().Nam).IndexOf(str) != -1)
+                else if (Convert.ToString(n.getNgayThangNamSinh().getNam()).IndexOf(str) != -1)
                 {
                     vitri[i] = n.getViTri();
                     i++;
@@ -185,7 +185,7 @@ namespace CSharp
             {
                 for (int j = i+1; j < list.Count; j++)
                 {
-                    if (list[i].getNgayThangNamSinh().Thang > list[j].getNgayThangNamSinh().Thang)
+                    if (list[i].getNgayThangNamSinh().getThang() > list[j].getNgayThangNamSinh().getThang())
                     {
                         NhanVien tmp = list[i];
                         list[i] = list[j];
@@ -193,8 +193,6 @@ namespace CSharp
                     }
                 }
             }
-
-            this.hienThi();
         }
 
 

@@ -20,22 +20,31 @@ namespace CSharp
             this.nam = nam;
         }
 
-        public int Ngay
+        public int getNgay()
         {
-            get { return ngay; }
-            set { ngay = value; }
+            return ngay;
+        }
+        public void setNgay(int ngay)
+        {
+            this.ngay = ngay;
         }
 
-        public int Thang
+        public int getThang()
         {
-            get { return thang; }
-            set { thang = value; }
+            return thang;
+        }
+        public void setThang(int thang)
+        {
+            this.thang = thang;
         }
 
-        public int Nam
+        public int getNam()
         {
-            get { return nam; }
-            set { nam = value; }
+            return nam;
+        }
+        public void setNam(int nam)
+        {
+            this.nam = nam;
         }
 
         public override string ToString()

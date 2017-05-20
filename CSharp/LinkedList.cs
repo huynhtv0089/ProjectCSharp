@@ -19,44 +19,65 @@ namespace CSharp
 		    tail = null;
 		    nNumber = 0 ;
 	    }
-	
-	    public void insertFrist(Element n) {
-		    if(head == null)
-			    tail = n;
-		    else 
-			    head.setPrePtr(n);
-		    n.setNextPtr(head);
-		    head = n;
-		    this.nNumber++;
-	    }
+
+        public Element getHead()
+        {
+            return head;
+        }
+
+        public void setHead(Element head)
+        {
+            this.head = head;
+        }
+
+        public Element getTail()
+        {
+            return tail;
+        }
+
+        public void setTail(Element tail)
+        {
+            this.tail = tail;
+        }
 	
 	    public void insertTail(Element n) {
-		    if(tail == null)
-			    head =  n;
+		    if(head == null)
+			    head = tail = n;
 		    else
 			    tail.setNextPtr(n);
 		
 		    n.setPrePtr(tail);
 		    tail = n;
-		    this.nNumber++;
 	    }
-	
-	
-	    public Element deleteFirst() {
-		    Element p = head;
-		    head = head.getNextPtr();
-		    this.nNumber--;
-		    return p;
-	    }
-	
-	    public Element deleteTail() {
-		    Element p = tail;
-		    tail = tail.getPrePtr();
-		    this.nNumber--;
-		    return p;
-	    }
-	
+
+        public void docFile()
+        {
+            string[] lines = System.IO.File.ReadAllLines("D:\\vidu.txt");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                NhanVien nv = new NhanVien();
+                //Split line
+                String[] arrLine = lines[i].Split('|');
+                //Split date
+                String[] arrDate = arrLine[2].Split('/');
+                int ngay = int.Parse(arrDate[0]);
+                int thang = int.Parse(arrDate[1]);
+                int nam = int.Parse(arrDate[2]);
+
+                nv.setHoTen(arrLine[0]);
+                nv.setChucVu(arrLine[1]);
+                nv.setNgayThangNamSinh(new Date(ngay, thang, nam));
+                nv.setHeSoLuong(double.Parse(arrLine[3]));
+
+                Element e = new Element(nv);
+                this.insertTail(e);
+                //Console.WriteLine(e);
+            }
+        }
+
 	    public void printList() {
+            Console.WriteLine(" Ho va ten \t   Chuc vu  \t  Ngay thang nam sinh \t  He so luong");
 		    Element p = head;
 		    while(p != null) {
 			    Console.WriteLine(p.getData() + " ");
@@ -106,33 +127,12 @@ namespace CSharp
             }
         }
 
-        public NhanVien nhapNV()
+        public Element deleteFirst()
         {
-            NhanVien nv = new NhanVien();
-            string hoTen = null, chucVu = null;
-            int ngay = 0, thang = 0, nam = 0;
-            double heSoLuong = 0;
-
-            Console.WriteLine("Nhap Ten nhan vien: ");
-            hoTen = Console.ReadLine();
-            Console.WriteLine("Nhap chuc vu: ");
-            chucVu = Console.ReadLine();
-            Console.WriteLine("Nhap ngay thang nam sinh: ");
-            Console.WriteLine("Nhap ngay: ");
-            ngay = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap thang: ");
-            thang = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap nam: ");
-            nam = int.Parse(Console.ReadLine());
-            Console.WriteLine("Nhap he so luong: ");
-            heSoLuong = double.Parse(Console.ReadLine());
-
-            nv.setHoTen(hoTen);
-            nv.setChucVu(chucVu);
-            nv.setNgayThangNamSinh(new Date(ngay, thang, nam));
-            nv.setHeSoLuong(heSoLuong);
-
-            return nv;
+            Element p = head;
+            head = head.getNextPtr();
+            this.nNumber--;
+            return p;
         }
 
         public void ghiFile()
@@ -141,7 +141,7 @@ namespace CSharp
             StreamWriter sw = fi.CreateText();
 
             Element p = head;
-            while(p != null)
+            while (p != null)
             {
                 sw.WriteLine(p.getData().getHoTen() + "|" + p.getData().getChucVu() + "|" + p.getData().getNgayThangNamSinh() + "|" + p.getData().getHeSoLuong());
                 p = p.getNextPtr();
@@ -149,29 +149,34 @@ namespace CSharp
             sw.Close();
         }
 
-        public void docFile()
+        public void nhapNV()
         {
-            string[] lines = System.IO.File.ReadAllLines("D:\\vidu.txt");
             NhanVien nv = new NhanVien();
+            string hoTen = null, chucVu = null;
+            int ngay = 0, thang = 0, nam = 0;
+            double heSoLuong = 0;
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                //Split line
-                String[] arrLine = lines[i].Split('|');
-                //Split date
-                String[] arrDate = arrLine[2].Split('/');
-                int ngay = int.Parse(arrDate[0]);
-                int thang = int.Parse(arrDate[1]);
-                int nam = int.Parse(arrDate[2]);
+            Console.Write("Nhap Ten nhan vien: ");
+            hoTen = Console.ReadLine();
+            Console.Write("Nhap chuc vu: ");
+            chucVu = Console.ReadLine();
+            Console.WriteLine("Nhap vao ngay thang nam sinh: ");
+            Console.Write("Nhap ngay: ");
+            ngay = int.Parse(Console.ReadLine());
+            Console.Write("Nhap thang: ");
+            thang = int.Parse(Console.ReadLine());
+            Console.Write("Nhap nam: ");
+            nam = int.Parse(Console.ReadLine());
+            Console.Write("Nhap he so luong: ");
+            heSoLuong = double.Parse(Console.ReadLine());
 
-                nv.setHoTen(arrLine[0]);
-                nv.setChucVu(arrLine[1]);
-                nv.setNgayThangNamSinh(new Date(ngay, thang, nam));
-                nv.setHeSoLuong(double.Parse(arrLine[3]));
+            nv.setHoTen(hoTen);
+            nv.setChucVu(chucVu);
+            nv.setNgayThangNamSinh(new Date(ngay, thang, nam));
+            nv.setHeSoLuong(heSoLuong);
 
-                Element e = new Element(nv);
-                this.insertTail(e);
-            }
+            Element e = new Element(nv);
+            this.insertTail(e);
         }
 
         public void capNhatVitri()
@@ -209,17 +214,17 @@ namespace CSharp
                     vitri[i] = p.getData().getViTri();
                     i++;
                 }
-                else if (Convert.ToString(p.getData().getNgayThangNamSinh().Ngay).IndexOf(str) != -1)
+                else if (Convert.ToString(p.getData().getNgayThangNamSinh().getNgay()).IndexOf(str) != -1)
                 {
                     vitri[i] = p.getData().getViTri();
                     i++;
                 }
-                else if (Convert.ToString(p.getData().getNgayThangNamSinh().Thang).IndexOf(str) != -1)
+                else if (Convert.ToString(p.getData().getNgayThangNamSinh().getThang()).IndexOf(str) != -1)
                 {
                     vitri[i] = p.getData().getViTri();
                     i++;
                 }
-                else if (Convert.ToString(p.getData().getNgayThangNamSinh().Nam).IndexOf(str) != -1)
+                else if (Convert.ToString(p.getData().getNgayThangNamSinh().getNam()).IndexOf(str) != -1)
                 {
                     vitri[i] = p.getData().getViTri();
                     i++;
@@ -258,17 +263,21 @@ namespace CSharp
             while(p != null) {
                 getPos = this.timViTri(str)[0];
                 if (getPos != 0)
-                {
-                    if (p.getData().getViTri() == (getPos - 1))
-                    {
-                        //Console.WriteLine(getPos - 1);
-                        n = p;
+                {   
+                    if((getPos-1) == 0) { //Xoa phan tu dau tien
+                        this.deleteFirst();
+                    }else {
+                        if (p.getData().getViTri() == (getPos - 1))
+                        {
+                            //Console.WriteLine(getPos - 1);
+                            n = p;
+                        }
+                        if (p.getData().getViTri() == getPos)
+                        {
+                            this.deleteAfter(n, p);
+                        }
                     }
-                    if (p.getData().getViTri() == getPos)
-                    {
-                        this.deleteAfter(n, p);
-                        //Console.WriteLine(getPos);
-                    }
+
                 }
                 p = p.getNextPtr();
             }
@@ -289,15 +298,15 @@ namespace CSharp
 
         public void sapXep()
         {
-
             for (Element p = head; p != tail.getNextPtr(); p = p.getNextPtr())
             {
                 for (Element q = p.getNextPtr(); q != null; q = q.getNextPtr())
                 {
-                    if(p.getData().getNgayThangNamSinh().Nam > q.getData().getNgayThangNamSinh().Nam) {
-                        Element e = p;
-                        p = q;
-                        q = e;
+                    if (p.getData().getNgayThangNamSinh().getThang() > q.getData().getNgayThangNamSinh().getThang())
+                    {
+                        NhanVien e = p.getData();
+                        p.setData(q.getData());
+                        q.setData(e);
                     }
                 }
             }

@@ -71,7 +71,8 @@ namespace CSharp
 
         public override string ToString()
         {
-            return "Ten: " + hoTen + ", chuc vu: " + chucVu + ", ngay thang nam sinh: " + ngayThangNamSinh + ", he so luong: " + heSoLuong;
+            //return hoTen + "\t" + chucVu + "\t" + ngayThangNamSinh + "\t"+ heSoLuong;
+            return string.Format("{0,-19}{1,-20}{2,-20}{3,5}", hoTen, chucVu, ngayThangNamSinh, heSoLuong);
         }
     }
 }
